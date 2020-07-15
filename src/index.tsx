@@ -11,14 +11,12 @@ import * as serviceWorker from "./serviceWorker";
 import "./index.css";
 
 ReactDOM.render(
-  <React.StrictMode>
-    <ApolloProvider client={graphQLFacadeService()}>
-      <CssBaseline />
-      <NotificationProvider>
-        <RootContainer />
-      </NotificationProvider>
-    </ApolloProvider>
-  </React.StrictMode>,
+  <ApolloProvider client={graphQLFacadeService()}>
+    <CssBaseline />
+    <NotificationProvider>
+      <RootContainer />
+    </NotificationProvider>
+  </ApolloProvider>,
   document.getElementById("root")
 );
 

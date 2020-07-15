@@ -1,12 +1,12 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import { LandingRoute } from "+landing";
+import { ChatRoute } from '+chat';
 
-import { NotificationsContainer } from "../NotificationsContainer";
+import { NotificationsContainer } from '../NotificationsContainer';
 
 export const RootContainer: FC = () => (
   <main className="App">
-    <LandingRoute />
+    <ChatRoute />
     <NotificationsContainer />
   </main>
 );

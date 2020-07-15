@@ -1,21 +1,21 @@
-import React, { FC } from "react";
-import SnackbarContent from "@material-ui/core/SnackbarContent";
-import Snackbar from "@material-ui/core/Snackbar";
+import React, { FC } from 'react';
+import SnackbarContent from '@material-ui/core/SnackbarContent';
+import Snackbar from '@material-ui/core/Snackbar';
 
-import { useNotificationContext } from "providers";
-import { Notification, NotificationType } from "types";
+import { useNotificationContext } from 'providers';
+import { Notification, NotificationType } from 'types';
 
-import "./NotificationsContainer.css";
+import './NotificationsContainer.css';
 
 const getNotificationClass = (notification: Notification | null) => {
   if (!notification) {
-    return "";
+    return '';
   }
   switch (notification.type) {
     case NotificationType.Success:
-      return "success";
+      return 'success';
     case NotificationType.Error:
-      return "error";
+      return 'error';
   }
 };
 
@@ -26,8 +26,8 @@ export const NotificationsContainer: FC = () => {
     <Snackbar
       className="NotificationsContainer"
       anchorOrigin={{
-        vertical: "bottom",
-        horizontal: "center",
+        vertical: 'bottom',
+        horizontal: 'center',
       }}
       open={Boolean(first)}
       autoHideDuration={3000}
@@ -35,7 +35,7 @@ export const NotificationsContainer: FC = () => {
     >
       <SnackbarContent
         className={getNotificationClass(first)}
-        message={first ? first.text : ""}
+        message={first ? first.text : ''}
       />
     </Snackbar>
   );

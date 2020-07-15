@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 
-import { useGetAllUsers } from "./hooks";
+import { useGetAllUsers } from './hooks';
 
-import "./LandingRoute.css";
+import './ChatRoute.css';
 
-export const LandingRoute: FC = () => {
+export const ChatRoute: FC = () => {
   const { loading, error, data } = useGetAllUsers();
   if (loading) {
     return <div>Loading...</div>;
@@ -15,5 +15,5 @@ export const LandingRoute: FC = () => {
   }
   console.log(data);
 
-  return <div className="LandingRoute">Landing Page here!</div>;
+  return <div className="ChatRoute">Chat Page here!</div>;
 };

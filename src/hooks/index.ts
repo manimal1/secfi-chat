@@ -1,1 +1,1 @@
-export * from "./useGetApolloCallbacks";
+export * from './useGetApolloCallbacks';

@@ -1,6 +1,6 @@
-import React from "react";
+import React from 'react';
 
-import { noop, Notification, ShowNotification } from "types";
+import { noop, Notification, ShowNotification } from 'types';
 
 interface NotificationState {
   notifications: Notification[];

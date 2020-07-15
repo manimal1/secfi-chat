@@ -63,6 +63,7 @@
     "@graphql-codegen/typescript-operations": "^1.17.0",
     "@graphql-codegen/typescript-react-apollo": "^1.17.0",
     "@graphql-codegen/typescript-resolvers": "^1.17.0",
-    "@types/lodash": "^4.14.157"
+    "@types/lodash": "^4.14.157",
+    "prettier": "^2.0.5"
   }
 }

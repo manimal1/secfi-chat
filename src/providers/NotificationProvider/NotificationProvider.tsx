@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
-import isEqual from "lodash/isEqual";
+import React, { FC, useState } from 'react';
+import isEqual from 'lodash/isEqual';
 
-import { Notification, NotificationType } from "types";
+import { Notification, NotificationType } from 'types';
 
-import { NotificationContext } from "./NotificationContext";
+import { NotificationContext } from './NotificationContext';
 
 export const NotificationProvider: FC = ({ children }) => {
   const [notifications, setNotifications] = useState<Notification[]>([]);

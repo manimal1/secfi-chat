@@ -1,13 +1,13 @@
-import { ApolloError } from "apollo-client";
+import { ApolloError } from 'apollo-client';
 
-import { useNotificationContext } from "providers";
-import { NotificationType } from "types";
-import { getApolloError } from "utils";
+import { useNotificationContext } from 'providers';
+import { NotificationType } from 'types';
+import { getApolloError } from 'utils';
 
 export function useGetApolloCallbacks<T = any>({
-  successMessage = "",
+  successMessage = '',
   successCallback,
-  errorMessage = "",
+  errorMessage = '',
 }: {
   successMessage?: string;
   successCallback?: (data: T) => void;
