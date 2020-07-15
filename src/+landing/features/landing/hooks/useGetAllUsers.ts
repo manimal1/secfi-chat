@@ -1,6 +1,6 @@
 import { useQuery } from "react-apollo";
 
-import { GetAllUsersDocument, GetAllUsersQuery } from "@generated/facadeClient";
+import { GetAllUsersDocument, GetAllUsersQuery } from "@generated";
 
 import { useGetApolloCallbacks } from "hooks";
 
