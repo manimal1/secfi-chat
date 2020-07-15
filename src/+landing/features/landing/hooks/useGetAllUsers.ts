@@ -1,13 +1,16 @@
-import gql from "graphql-tag";
+import { useQuery } from "react-apollo";
 
-export const GET_ALL_USERS = gql`
-  query GetAllUsers {
-    User(order_by: { last_name: desc }) {
-      uuid
-      email
-      first_name
-      last_name
-      created_at
-    }
-  }
-`;
+import { GetAllUsersDocument, GetAllUsersQuery } from "@generated";
+
+import { useGetApolloCallbacks } from "hooks";
+
+export function useGetAllUsers() {
+  const { onCompleted, onError } = useGetApolloCallbacks({
+    successMessage: "Notifications are working!",
+    errorMessage: "Cannot fetch users",
+  });
+  return useQuery<GetAllUsersQuery>(GetAllUsersDocument, {
+    onCompleted,
+    onError,
+  });
+}
