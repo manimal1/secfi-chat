@@ -1,0 +1,7 @@
+.NotificationsContainer .error {
+  background: #d32f2f;
+}
+
+.NotificationsContainer .success {
+  background: #43a047;
+}
