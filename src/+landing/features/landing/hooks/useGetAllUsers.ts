@@ -1,13 +1,12 @@
-import gql from "graphql-tag";
+import { useQuery } from "react-apollo";
 
-export const GET_ALL_USERS = gql`
-  query GetAllUsers {
-    User(order_by: { last_name: desc }) {
-      uuid
-      email
-      first_name
-      last_name
-      created_at
-    }
-  }
-`;
+import { GetAllUsersDocument, GetAllUsersQuery } from "@generated/facadeClient";
+
+import { useGetApolloCallbacks } from "hooks";
+
+export function useGetAllUsers() {
+  const { onError } = useGetApolloCallbacks({});
+  return useQuery<GetAllUsersQuery>(GetAllUsersDocument, {
+    onError,
+  });
+}

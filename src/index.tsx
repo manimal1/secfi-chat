@@ -1,22 +1,22 @@
-import React, { FC } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { ApolloProvider } from "@apollo/react-hooks";
 import { graphQLFacadeService } from "services/graphQLFacadeService";
 
-import { LandingRoute } from "+landing";
+import { NotificationProvider } from "providers";
+import { RootContainer } from "containers";
 import * as serviceWorker from "./serviceWorker";
 
 import "./index.css";
-// import { App } from "./App";
 
 ReactDOM.render(
   <React.StrictMode>
-    <CssBaseline />
     <ApolloProvider client={graphQLFacadeService()}>
-      <main className="App">
-        <LandingRoute />
-      </main>
+      <CssBaseline />
+      <NotificationProvider>
+        <RootContainer />
+      </NotificationProvider>
     </ApolloProvider>
   </React.StrictMode>,
   document.getElementById("root")

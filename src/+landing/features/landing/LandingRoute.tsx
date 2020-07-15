@@ -1,14 +1,11 @@
 import React, { FC } from "react";
-import { useQuery } from "@apollo/react-hooks";
 
-import { GetAllUsersDocument } from "@generated/facadeClient";
-
-// import { GET_ALL_USERS } from "./hooks";
+import { useGetAllUsers } from "./hooks";
 
 import "./LandingRoute.css";
 
 export const LandingRoute: FC = () => {
-  const { loading, error, data } = useQuery(GetAllUsersDocument);
+  const { loading, error, data } = useGetAllUsers();
   if (loading) {
     return <div>Loading...</div>;
   }
