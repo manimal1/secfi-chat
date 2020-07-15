@@ -1,0 +1,25 @@
+overwrite: true
+schema:
+  - http://localhost:8080/v1/graphql
+  - "src/**/*.graphql"
+documents: "src/**/*.graphql"
+generates:
+  src/@generated/fragmentMatcher.ts:
+    plugins:
+      - add: /* eslint-disable */
+      - add: /* istanbul ignore file */
+      - fragment-matcher
+  src/@generated/facadeClient.tsx:
+    plugins:
+      - add: /* eslint-disable */
+      - add: /* istanbul ignore file */
+      - typescript
+      - typescript-operations
+      - typescript-react-apollo
+    config:
+      declarationKind: "interface"
+      withComponent: false
+      withHooks: false
+      withMutationFn: false
+      withHOC: false
+      reactApolloVersion: 3
