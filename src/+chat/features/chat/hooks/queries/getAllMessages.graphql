@@ -1,8 +1,8 @@
 query GetAllMessages(
-  $last_received_uuid: Int
+  $last_received_uuid: uuid
   $last_received_timestamp: timestamptz
 ) {
-  message(
+  Message(
     order_by: { timestamp: asc }
     where: {
       _and: {
@@ -11,7 +11,7 @@ query GetAllMessages(
       }
     }
   ) {
-    id
+    uuid
     text
     username
     timestamp

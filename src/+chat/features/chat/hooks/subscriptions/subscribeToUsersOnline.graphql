@@ -1,0 +1,6 @@
+subscription SubscribeToUsersOnline {
+  user_online(order_by: { username: asc }) {
+    uuid
+    username
+  }
+}

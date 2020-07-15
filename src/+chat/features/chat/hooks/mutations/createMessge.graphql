@@ -1,0 +1,10 @@
+mutation CreateMessage($message: Message_insert_input!) {
+  insert_Message(objects: [$message]) {
+    returning {
+      uuid
+      timestamp
+      text
+      username
+    }
+  }
+}

@@ -1,0 +1,10 @@
+subscription SubscribeToLastUserTyping($selfUuid: uuid) {
+  user_typing(
+    where: { uuid: { _neq: $selfUuid } }
+    limit: 1
+    order_by: { last_typed: desc }
+  ) {
+    last_typed
+    username
+  }
+}
