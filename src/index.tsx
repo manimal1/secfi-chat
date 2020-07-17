@@ -1,23 +1,24 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { ApolloProvider } from "@apollo/react-hooks";
-import { graphQLFacadeService } from "services/graphQLFacadeService";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { ApolloProvider } from '@apollo/client';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
-import { NotificationProvider } from "providers";
-import { RootContainer } from "containers";
-import * as serviceWorker from "./serviceWorker";
+import { graphQLFacadeService } from 'services';
+import { NotificationProvider } from 'providers';
+import { RootContainer } from 'containers';
 
-import "./index.css";
+import * as serviceWorker from './serviceWorker';
+
+import './index.css';
 
 ReactDOM.render(
-  <ApolloProvider client={graphQLFacadeService()}>
+  <ApolloProvider client={graphQLFacadeService}>
     <CssBaseline />
     <NotificationProvider>
       <RootContainer />
     </NotificationProvider>
   </ApolloProvider>,
-  document.getElementById("root")
+  document.getElementById('root')
 );
 
 // If you want your app to work offline and load faster, you can change

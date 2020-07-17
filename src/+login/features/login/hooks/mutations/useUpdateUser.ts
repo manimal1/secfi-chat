@@ -1,4 +1,8 @@
-import { useMutation, MutationHookOptions, MutationResult } from 'react-apollo';
+import {
+  useMutation,
+  MutationHookOptions,
+  MutationResult,
+} from '@apollo/client';
 
 import {
   UpdateUserDocument,

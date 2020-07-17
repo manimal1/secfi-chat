@@ -1,4 +1,4 @@
-import { useSubscription } from 'react-apollo';
+import { useSubscription } from '@apollo/client';
 
 import {
   SubscribeToUsersOnlineDocument,

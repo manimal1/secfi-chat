@@ -7,20 +7,18 @@ import CardContent from '@material-ui/core/CardContent';
 import Avatar from '@material-ui/core/Avatar';
 
 import { User } from '@generated';
+import { useGetCurrentUser } from 'hooks';
 import { useGetAllMessages } from '../../hooks';
 
 import './MessagesContainer.css';
 
 dayjs.extend(localizedFormat);
 
-interface ContainerProps {
-  user: User | undefined;
-}
-
-export const MessagesContainer: FC<ContainerProps> = ({ user }) => {
+export const MessagesContainer: FC = () => {
   const { loading, error, data } = useGetAllMessages();
+  const currentUser: User = useGetCurrentUser();
 
-  if (!user) {
+  if (!currentUser) {
     return null;
   }
 
@@ -43,10 +41,10 @@ export const MessagesContainer: FC<ContainerProps> = ({ user }) => {
         <CardHeader
           avatar={
             <Avatar aria-label="user" className="message-avatar primary-color">
-              A
+              {currentUser.username.slice(0, 1).toUpperCase()}
             </Avatar>
           }
-          title={user?.username}
+          title={currentUser?.username}
           subheader={dayjs(message.timestamp).format('LLLL')}
         />
         <CardContent>{message.text}</CardContent>

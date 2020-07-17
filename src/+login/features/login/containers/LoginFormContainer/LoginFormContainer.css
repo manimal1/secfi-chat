@@ -1,0 +1,16 @@
+.LoginForm .login-card {
+  position: relative;
+  width: 460px;
+  margin: 2em;
+  padding: 2em;
+}
+
+.LoginForm .login-button {
+  display: block;
+  border: 0;
+  border-radius: 4px;
+  margin-top: 1em;
+  background-color: #4364e8;
+  padding: 1em;
+  color: #fff;
+}

@@ -1,4 +1,4 @@
-import { useQuery } from 'react-apollo';
+import { useQuery } from '@apollo/client';
 
 import { GetAllUsersDocument, GetAllUsersQuery } from '@generated';
 
