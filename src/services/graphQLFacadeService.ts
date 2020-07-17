@@ -1,15 +1,11 @@
-import ApolloClient from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
+import { ApolloClient, InMemoryCache } from '@apollo/client';
 
 export const graphQLFacadeService: any = () => {
   return new ApolloClient({
-    link: new HttpLink({
-      uri: 'http://localhost:8080/v1/graphql',
-      // headers: {
-      //   Authorization: `Bearer ${authToken}`,
-      // },
-    }),
+    uri: 'http://localhost:8080/v1/graphql',
     cache: new InMemoryCache(),
+    // headers: {
+    //   Authorization: `Bearer ${authToken}`,
+    // },
   });
 };

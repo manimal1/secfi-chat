@@ -1,0 +1,10 @@
+.MessagesContainer .message-card {
+  position: relative;
+  margin: 2em;
+  padding: 2em;
+}
+
+.MessagesContainer .message-avatar {
+  background-color: #4364e8;
+  color: #ffffff;
+}

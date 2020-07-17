@@ -1,4 +1,4 @@
-import { ApolloError } from 'apollo-client';
+import { ApolloError } from '@apollo/client';
 
 import { useNotificationContext } from 'providers';
 import { NotificationType } from 'types';

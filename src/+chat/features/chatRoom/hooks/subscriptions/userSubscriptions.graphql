@@ -8,3 +8,10 @@ subscription SubscribeToLastUserTyping($selfUuid: uuid) {
     username
   }
 }
+
+subscription SubscribeToUsersOnline {
+  user_online(order_by: { username: asc }) {
+    uuid
+    username
+  }
+}

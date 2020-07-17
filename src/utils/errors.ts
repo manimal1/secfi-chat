@@ -1,4 +1,4 @@
-import { ApolloError } from 'apollo-client/errors/ApolloError';
+import { ApolloError } from '@apollo/client';
 import omit from 'lodash/omit';
 import toPairs from 'lodash/toPairs';
 

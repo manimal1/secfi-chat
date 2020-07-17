@@ -1,8 +1,0 @@
-mutation UpdateUser($userUuid: uuid!) {
-  update_User(
-    _set: { last_seen: "now()" }
-    where: { uuid: { _eq: $userUuid } }
-  ) {
-    affected_rows
-  }
-}

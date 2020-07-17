@@ -1,8 +1,0 @@
-mutation CreateUser($username: String!) {
-  insert_User(objects: [{ username: $username }]) {
-    returning {
-      uuid
-      username
-    }
-  }
-}

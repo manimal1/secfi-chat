@@ -1,8 +1,0 @@
-mutation UpdateUserTyping($userUuid: uuid) {
-  update_User(
-    _set: { last_typed: "now()" }
-    where: { uuid: { _eq: $userUuid } }
-  ) {
-    affected_rows
-  }
-}
