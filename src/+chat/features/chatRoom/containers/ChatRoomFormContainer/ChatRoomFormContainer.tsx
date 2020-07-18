@@ -12,6 +12,7 @@ export const ChatRoomFormContainer: FC = () => {
   const [creatMessageMutate] = useCreateMessage();
   const currentUser = useGetCurrentUser();
 
+  // TODO: remove this check when routing is added
   if (!currentUser) {
     return null;
   }

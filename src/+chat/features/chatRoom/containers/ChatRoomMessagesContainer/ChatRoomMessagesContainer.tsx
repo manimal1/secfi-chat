@@ -12,6 +12,7 @@ export const ChatRoomMessagesContainer: FC = () => {
   const { loading, error, data } = useGetAllMessages();
   const currentUser: Partial<User> = useGetCurrentUser();
 
+  // TODO: remove when routing is added
   if (!currentUser) {
     return null;
   }

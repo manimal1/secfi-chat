@@ -12,6 +12,7 @@ Using [Hasura](https://hasura.io/) and [Docker](https://www.docker.com/), this a
 
 ### TODO:
 
+- Set up routing
 - Set up user authorization and roles
 - Set up a production-ready Hasura deployment
 
