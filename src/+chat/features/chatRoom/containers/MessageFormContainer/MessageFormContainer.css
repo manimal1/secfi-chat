@@ -1,0 +1,22 @@
+.MessageFormContainer {
+  padding: 2em;
+  position: absolute;
+  top: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 1px solid black;
+}
+
+.MessageFormContainer .message-form-input {
+  position: relative;
+  display: block;
+  width: 100%;
+}
+
+.MessageFormContainer .message-form-button {
+  display: block;
+  margin-top: 1em;
+  background-color: #4364e8;
+  color: #fff;
+}

@@ -1,0 +1,8 @@
+subscription OnMessageAdded {
+  Message(order_by: { uuid: desc }, limit: 1) {
+    uuid
+    username
+    text
+    timestamp
+  }
+}

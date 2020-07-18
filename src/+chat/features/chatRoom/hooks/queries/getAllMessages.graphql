@@ -1,0 +1,19 @@
+query GetAllMessages(
+  $last_received_uuid: uuid
+  $last_received_timestamp: timestamptz
+) {
+  Message(
+    order_by: { timestamp: asc }
+    where: {
+      _and: {
+        uuid: { _neq: $last_received_uuid }
+        timestamp: { _gte: $last_received_timestamp }
+      }
+    }
+  ) {
+    uuid
+    text
+    username
+    timestamp
+  }
+}

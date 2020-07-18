@@ -1,0 +1,12 @@
+query GetUserByUuid($uuid: uuid!) {
+  User_by_pk(uuid: $uuid) {
+    uuid
+    username
+    email
+    last_seen
+    last_typed
+    first_name
+    last_name
+    created_at
+  }
+}

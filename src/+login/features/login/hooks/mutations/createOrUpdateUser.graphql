@@ -1,0 +1,26 @@
+mutation CreateUser($username: String!) {
+  insert_User(objects: [{ username: $username }]) {
+    returning {
+      uuid
+      username
+    }
+  }
+}
+
+mutation UpdateUser($userUuid: uuid!) {
+  update_User(
+    _set: { last_seen: "now()" }
+    where: { uuid: { _eq: $userUuid } }
+  ) {
+    affected_rows
+  }
+}
+
+mutation UpdateUserTyping($userUuid: uuid) {
+  update_User(
+    _set: { last_typed: "now()" }
+    where: { uuid: { _eq: $userUuid } }
+  ) {
+    affected_rows
+  }
+}

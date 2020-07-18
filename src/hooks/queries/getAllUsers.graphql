@@ -1,0 +1,12 @@
+query GetAllUsers {
+  User(order_by: { username: desc }) {
+    uuid
+    created_at
+    username
+    last_seen
+    last_typed
+    email
+    first_name
+    last_name
+  }
+}

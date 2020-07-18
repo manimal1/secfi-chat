@@ -1,13 +1,13 @@
-import { ApolloError } from "apollo-client/errors/ApolloError";
-import omit from "lodash/omit";
-import toPairs from "lodash/toPairs";
+import { ApolloError } from '@apollo/client';
+import omit from 'lodash/omit';
+import toPairs from 'lodash/toPairs';
 
 interface ExtendedError extends Error {
   result?: any;
 }
 
 function processNetworkError(error: ExtendedError) {
-  const result = error["result"];
+  const result = error['result'];
   const resultErrors = result && result.errors;
   return resultErrors && resultErrors[0] && resultErrors[0].message;
 }
@@ -19,10 +19,10 @@ function processBadUserInputError(extensions: {
   if (extensions.exception && extensions.exception.code) {
     return extensions.exception.code;
   } else {
-    const validationErrors = omit(extensions, ["code", "exception"]);
+    const validationErrors = omit(extensions, ['code', 'exception']);
     return toPairs(validationErrors)
-      .map((item) => item.join(": "))
-      .join("; ");
+      .map((item) => item.join(': '))
+      .join('; ');
   }
 }
 
@@ -39,19 +39,19 @@ export function getApolloError(error: ApolloError, defaultMessage: string) {
 
   if (extensions.non_field_errors) {
     return extensions.non_field_errors;
-  } else if (extensions.code === "BAD_USER_INPUT") {
+  } else if (extensions.code === 'BAD_USER_INPUT') {
     return processBadUserInputError(extensions) || defaultMessage;
-  } else if (extensions.code === "FORBIDDEN") {
+  } else if (extensions.code === 'FORBIDDEN') {
     return error.message;
-  } else if (extensions.code === "INTERNAL_SERVER_ERROR") {
+  } else if (extensions.code === 'INTERNAL_SERVER_ERROR') {
     return `Internal server error: ${error.message}`;
-  } else if (extensions.code === "GRAPHQL_VALIDATION_FAILED") {
+  } else if (extensions.code === 'GRAPHQL_VALIDATION_FAILED') {
     const stackTracePart =
       extensions.exception && extensions.exception.stacktrace
         ? extensions.exception.stacktrace[0]
-        : "";
+        : '';
     if (stackTracePart && path.length > 0) {
-      return `${stackTracePart}. Path: ${path.join(".")}`;
+      return `${stackTracePart}. Path: ${path.join('.')}`;
     }
   }
 

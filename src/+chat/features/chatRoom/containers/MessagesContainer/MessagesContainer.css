@@ -1,0 +1,4 @@
+.MessagesContainer {
+  max-height: calc(100vh - 194px);
+  overflow: scroll;
+}
