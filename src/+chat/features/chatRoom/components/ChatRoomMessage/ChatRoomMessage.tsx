@@ -5,21 +5,21 @@ import { Avatar, Card, CardHeader, CardContent } from '@material-ui/core';
 
 import { Message } from '@generated';
 
-import './MessageCard.css';
+import './ChatRoomMessage.css';
 
 dayjs.extend(localizedFormat);
 
-interface MessageCardProps {
+interface ChatRoomMessageProps {
   message: Partial<Message>;
 }
 
-export const MessageCard: FC<MessageCardProps> = ({ message }) => {
+export const ChatRoomMessage: FC<ChatRoomMessageProps> = ({ message }) => {
   if (!message) {
     return null;
   }
 
   return (
-    <Card className="MessageCard">
+    <Card className="ChatRoomMessage">
       <CardHeader
         avatar={
           <Avatar aria-label="user" className="message-avatar primary-color">

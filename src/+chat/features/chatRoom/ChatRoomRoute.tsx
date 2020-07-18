@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 
-import { MessagesContainer, MessageFormContainer } from './containers';
+import { ChatRoomMessagesContainer, ChatRoomFormContainer } from './containers';
 
 import './ChatRoomRoute.css';
 
 export const ChatRoomRoute: FC = () => {
   return (
     <section className="ChatRoomRoute">
-      <MessagesContainer />
-      <MessageFormContainer />
+      <ChatRoomMessagesContainer />
+      <ChatRoomFormContainer />
     </section>
   );
 };

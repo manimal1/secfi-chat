@@ -1,10 +1,10 @@
-.MessageCard {
+.ChatRoomMessage {
   position: relative;
   margin: 2em;
   padding: 2em;
 }
 
-.MessageCard .message-avatar {
+.ChatRoomMessage .message-avatar {
   background-color: #4364e8;
   color: #ffffff;
 }

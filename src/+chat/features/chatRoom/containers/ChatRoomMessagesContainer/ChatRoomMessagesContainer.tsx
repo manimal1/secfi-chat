@@ -3,12 +3,12 @@ import React, { FC } from 'react';
 import { User } from '@generated';
 import { useGetCurrentUser } from 'hooks';
 
-import { MessageCard } from '../../components';
+import { ChatRoomMessage } from '../../components';
 import { useGetAllMessages } from '../../hooks';
 
-import './MessagesContainer.css';
+import './ChatRoomMessagesContainer.css';
 
-export const MessagesContainer: FC = () => {
+export const ChatRoomMessagesContainer: FC = () => {
   const { loading, error, data } = useGetAllMessages();
   const currentUser: Partial<User> = useGetCurrentUser();
 
@@ -31,12 +31,12 @@ export const MessagesContainer: FC = () => {
     }
 
     return data?.Message.map((message: any) => (
-      <MessageCard key={message.uuid} message={message} />
+      <ChatRoomMessage key={message.uuid} message={message} />
     ));
   }
 
   return (
-    <div className="MessagesContainer">
+    <div className="ChatRoomMessagesContainer">
       <div className="messages">{renderMessages()}</div>
     </div>
   );
