@@ -9,6 +9,7 @@ import './LoginRoute.css';
 export const LoginRoute: FC = () => {
   const currentUser = useGetCurrentUser();
 
+  // TODO: remove when routing added
   if (currentUser) {
     return null;
   }

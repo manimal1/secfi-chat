@@ -1,4 +1,4 @@
-.MessageFormContainer {
+.ChatRoomFormContainer {
   padding: 2em;
   position: absolute;
   top: auto;
@@ -8,13 +8,13 @@
   border-top: 1px solid black;
 }
 
-.MessageFormContainer .message-form-input {
+.ChatRoomFormContainer .message-form-input {
   position: relative;
   display: block;
   width: 100%;
 }
 
-.MessageFormContainer .message-form-button {
+.ChatRoomFormContainer .message-form-button {
   display: block;
   margin-top: 1em;
   background-color: #4364e8;

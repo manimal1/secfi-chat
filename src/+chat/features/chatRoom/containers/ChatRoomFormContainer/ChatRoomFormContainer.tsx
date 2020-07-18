@@ -6,12 +6,13 @@ import { useGetCurrentUser } from 'hooks';
 
 import { useCreateMessage } from '../../hooks';
 
-import './MessageFormContainer.css';
+import './ChatRoomFormContainer.css';
 
-export const MessageFormContainer: FC = () => {
+export const ChatRoomFormContainer: FC = () => {
   const [creatMessageMutate] = useCreateMessage();
   const currentUser = useGetCurrentUser();
 
+  // TODO: remove this check when routing is added
   if (!currentUser) {
     return null;
   }
@@ -27,7 +28,7 @@ export const MessageFormContainer: FC = () => {
   }
 
   return (
-    <div className="MessageFormContainer">
+    <div className="ChatRoomFormContainer">
       <h2>Write New Message here:</h2>
       <Form
         initialValues={{ text: '' }}
