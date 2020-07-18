@@ -1,1 +1,1 @@
-export * from './useSubscribeToLastMessage';
+export * from './useSubscriptionOnMessageAdded';

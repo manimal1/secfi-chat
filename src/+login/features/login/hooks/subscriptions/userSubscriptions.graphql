@@ -1,4 +1,4 @@
-subscription SubscribeToLastUserTyping($selfUuid: uuid) {
+subscription LastUserTyping($selfUuid: uuid) {
   user_typing(
     where: { uuid: { _neq: $selfUuid } }
     limit: 1
@@ -9,7 +9,7 @@ subscription SubscribeToLastUserTyping($selfUuid: uuid) {
   }
 }
 
-subscription SubscribeToUsersOnline {
+subscription UsersOnline {
   user_online(order_by: { username: asc }) {
     uuid
     username

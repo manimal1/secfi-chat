@@ -31,7 +31,7 @@ export const MessagesContainer: FC = () => {
     }
 
     return data?.Message.map((message: any) => (
-      <MessageCard message={message} />
+      <MessageCard key={message.uuid} message={message} />
     ));
   }
 

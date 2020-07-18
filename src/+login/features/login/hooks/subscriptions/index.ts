@@ -1,1 +1,1 @@
-export * from './useSubscribeToUsersOnline';
+export * from './useSubscriptionsUsersOnline';

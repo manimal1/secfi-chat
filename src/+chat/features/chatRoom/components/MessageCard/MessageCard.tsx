@@ -19,7 +19,7 @@ export const MessageCard: FC<MessageCardProps> = ({ message }) => {
   }
 
   return (
-    <Card key={message.uuid} className="MessageCard">
+    <Card className="MessageCard">
       <CardHeader
         avatar={
           <Avatar aria-label="user" className="message-avatar primary-color">

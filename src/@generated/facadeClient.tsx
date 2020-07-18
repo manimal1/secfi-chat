@@ -1565,10 +1565,10 @@ export type GetAllMessagesQuery = (
   )> }
 );
 
-export type SubscribeToLastMessageSubscriptionVariables = Exact<{ [key: string]: never; }>;
+export type OnMessageAddedSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SubscribeToLastMessageSubscription = (
+export type OnMessageAddedSubscription = (
   { __typename?: 'subscription_root' }
   & { Message: Array<(
     { __typename?: 'Message' }
@@ -1618,12 +1618,12 @@ export type UpdateUserTypingMutation = (
   )> }
 );
 
-export type SubscribeToLastUserTypingSubscriptionVariables = Exact<{
+export type LastUserTypingSubscriptionVariables = Exact<{
   selfUuid?: Maybe<Scalars['uuid']>;
 }>;
 
 
-export type SubscribeToLastUserTypingSubscription = (
+export type LastUserTypingSubscription = (
   { __typename?: 'subscription_root' }
   & { user_typing: Array<(
     { __typename?: 'user_typing' }
@@ -1631,10 +1631,10 @@ export type SubscribeToLastUserTypingSubscription = (
   )> }
 );
 
-export type SubscribeToUsersOnlineSubscriptionVariables = Exact<{ [key: string]: never; }>;
+export type UsersOnlineSubscriptionVariables = Exact<{ [key: string]: never; }>;
 
 
-export type SubscribeToUsersOnlineSubscription = (
+export type UsersOnlineSubscription = (
   { __typename?: 'subscription_root' }
   & { user_online: Array<(
     { __typename?: 'user_online' }
@@ -1692,8 +1692,8 @@ export const GetAllMessagesDocument = gql`
 }
     `;
 export type GetAllMessagesQueryResult = ApolloReactCommon.QueryResult<GetAllMessagesQuery, GetAllMessagesQueryVariables>;
-export const SubscribeToLastMessageDocument = gql`
-    subscription SubscribeToLastMessage {
+export const OnMessageAddedDocument = gql`
+    subscription OnMessageAdded {
   Message(order_by: {uuid: desc}, limit: 1) {
     uuid
     username
@@ -1702,7 +1702,7 @@ export const SubscribeToLastMessageDocument = gql`
   }
 }
     `;
-export type SubscribeToLastMessageSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToLastMessageSubscription>;
+export type OnMessageAddedSubscriptionResult = ApolloReactCommon.SubscriptionResult<OnMessageAddedSubscription>;
 export const CreateUserDocument = gql`
     mutation CreateUser($username: String!) {
   insert_User(objects: [{username: $username}]) {
@@ -1733,24 +1733,24 @@ export const UpdateUserTypingDocument = gql`
     `;
 export type UpdateUserTypingMutationResult = ApolloReactCommon.MutationResult<UpdateUserTypingMutation>;
 export type UpdateUserTypingMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateUserTypingMutation, UpdateUserTypingMutationVariables>;
-export const SubscribeToLastUserTypingDocument = gql`
-    subscription SubscribeToLastUserTyping($selfUuid: uuid) {
+export const LastUserTypingDocument = gql`
+    subscription LastUserTyping($selfUuid: uuid) {
   user_typing(where: {uuid: {_neq: $selfUuid}}, limit: 1, order_by: {last_typed: desc}) {
     last_typed
     username
   }
 }
     `;
-export type SubscribeToLastUserTypingSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToLastUserTypingSubscription>;
-export const SubscribeToUsersOnlineDocument = gql`
-    subscription SubscribeToUsersOnline {
+export type LastUserTypingSubscriptionResult = ApolloReactCommon.SubscriptionResult<LastUserTypingSubscription>;
+export const UsersOnlineDocument = gql`
+    subscription UsersOnline {
   user_online(order_by: {username: asc}) {
     uuid
     username
   }
 }
     `;
-export type SubscribeToUsersOnlineSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToUsersOnlineSubscription>;
+export type UsersOnlineSubscriptionResult = ApolloReactCommon.SubscriptionResult<UsersOnlineSubscription>;
 export const GetAllUsersDocument = gql`
     query GetAllUsers {
   User(order_by: {username: desc}) {
