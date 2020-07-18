@@ -1,3 +1,4 @@
 .ChatRoomRoute {
-  position: relative;
+  display: block;
+  padding-bottom: 160px;
 }

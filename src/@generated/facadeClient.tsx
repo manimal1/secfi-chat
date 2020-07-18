@@ -1551,6 +1551,31 @@ export type CreateMessageMutation = (
   )> }
 );
 
+export type GetAllMessagesQueryVariables = Exact<{
+  last_received_uuid?: Maybe<Scalars['uuid']>;
+  last_received_timestamp?: Maybe<Scalars['timestamptz']>;
+}>;
+
+
+export type GetAllMessagesQuery = (
+  { __typename?: 'query_root' }
+  & { Message: Array<(
+    { __typename?: 'Message' }
+    & Pick<Message, 'uuid' | 'text' | 'username' | 'timestamp'>
+  )> }
+);
+
+export type SubscribeToLastMessageSubscriptionVariables = Exact<{ [key: string]: never; }>;
+
+
+export type SubscribeToLastMessageSubscription = (
+  { __typename?: 'subscription_root' }
+  & { Message: Array<(
+    { __typename?: 'Message' }
+    & Pick<Message, 'uuid' | 'username' | 'text' | 'timestamp'>
+  )> }
+);
+
 export type CreateUserMutationVariables = Exact<{
   username: Scalars['String'];
 }>;
@@ -1593,42 +1618,6 @@ export type UpdateUserTypingMutation = (
   )> }
 );
 
-export type GetAllMessagesQueryVariables = Exact<{
-  last_received_uuid?: Maybe<Scalars['uuid']>;
-  last_received_timestamp?: Maybe<Scalars['timestamptz']>;
-}>;
-
-
-export type GetAllMessagesQuery = (
-  { __typename?: 'query_root' }
-  & { Message: Array<(
-    { __typename?: 'Message' }
-    & Pick<Message, 'uuid' | 'text' | 'username' | 'timestamp'>
-  )> }
-);
-
-export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-export type GetAllUsersQuery = (
-  { __typename?: 'query_root' }
-  & { User: Array<(
-    { __typename?: 'User' }
-    & Pick<User, 'uuid' | 'created_at' | 'username' | 'last_seen' | 'last_typed' | 'email' | 'first_name' | 'last_name'>
-  )> }
-);
-
-export type SubscribeToLastMessageSubscriptionVariables = Exact<{ [key: string]: never; }>;
-
-
-export type SubscribeToLastMessageSubscription = (
-  { __typename?: 'subscription_root' }
-  & { Message: Array<(
-    { __typename?: 'Message' }
-    & Pick<Message, 'uuid' | 'username' | 'text' | 'timestamp'>
-  )> }
-);
-
 export type SubscribeToLastUserTypingSubscriptionVariables = Exact<{
   selfUuid?: Maybe<Scalars['uuid']>;
 }>;
@@ -1653,6 +1642,30 @@ export type SubscribeToUsersOnlineSubscription = (
   )> }
 );
 
+export type GetAllUsersQueryVariables = Exact<{ [key: string]: never; }>;
+
+
+export type GetAllUsersQuery = (
+  { __typename?: 'query_root' }
+  & { User: Array<(
+    { __typename?: 'User' }
+    & Pick<User, 'uuid' | 'created_at' | 'username' | 'last_seen' | 'last_typed' | 'email' | 'first_name' | 'last_name'>
+  )> }
+);
+
+export type GetUserByUuidQueryVariables = Exact<{
+  uuid: Scalars['uuid'];
+}>;
+
+
+export type GetUserByUuidQuery = (
+  { __typename?: 'query_root' }
+  & { User_by_pk?: Maybe<(
+    { __typename?: 'User' }
+    & Pick<User, 'uuid' | 'username' | 'email' | 'last_seen' | 'last_typed' | 'first_name' | 'last_name' | 'created_at'>
+  )> }
+);
+
 
 export const CreateMessageDocument = gql`
     mutation CreateMessage($message: Message_insert_input!) {
@@ -1668,6 +1681,28 @@ export const CreateMessageDocument = gql`
     `;
 export type CreateMessageMutationResult = ApolloReactCommon.MutationResult<CreateMessageMutation>;
 export type CreateMessageMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateMessageMutation, CreateMessageMutationVariables>;
+export const GetAllMessagesDocument = gql`
+    query GetAllMessages($last_received_uuid: uuid, $last_received_timestamp: timestamptz) {
+  Message(order_by: {timestamp: asc}, where: {_and: {uuid: {_neq: $last_received_uuid}, timestamp: {_gte: $last_received_timestamp}}}) {
+    uuid
+    text
+    username
+    timestamp
+  }
+}
+    `;
+export type GetAllMessagesQueryResult = ApolloReactCommon.QueryResult<GetAllMessagesQuery, GetAllMessagesQueryVariables>;
+export const SubscribeToLastMessageDocument = gql`
+    subscription SubscribeToLastMessage {
+  Message(order_by: {uuid: desc}, limit: 1) {
+    uuid
+    username
+    text
+    timestamp
+  }
+}
+    `;
+export type SubscribeToLastMessageSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToLastMessageSubscription>;
 export const CreateUserDocument = gql`
     mutation CreateUser($username: String!) {
   insert_User(objects: [{username: $username}]) {
@@ -1698,43 +1733,6 @@ export const UpdateUserTypingDocument = gql`
     `;
 export type UpdateUserTypingMutationResult = ApolloReactCommon.MutationResult<UpdateUserTypingMutation>;
 export type UpdateUserTypingMutationOptions = ApolloReactCommon.BaseMutationOptions<UpdateUserTypingMutation, UpdateUserTypingMutationVariables>;
-export const GetAllMessagesDocument = gql`
-    query GetAllMessages($last_received_uuid: uuid, $last_received_timestamp: timestamptz) {
-  Message(order_by: {timestamp: asc}, where: {_and: {uuid: {_neq: $last_received_uuid}, timestamp: {_gte: $last_received_timestamp}}}) {
-    uuid
-    text
-    username
-    timestamp
-  }
-}
-    `;
-export type GetAllMessagesQueryResult = ApolloReactCommon.QueryResult<GetAllMessagesQuery, GetAllMessagesQueryVariables>;
-export const GetAllUsersDocument = gql`
-    query GetAllUsers {
-  User(order_by: {username: desc}) {
-    uuid
-    created_at
-    username
-    last_seen
-    last_typed
-    email
-    first_name
-    last_name
-  }
-}
-    `;
-export type GetAllUsersQueryResult = ApolloReactCommon.QueryResult<GetAllUsersQuery, GetAllUsersQueryVariables>;
-export const SubscribeToLastMessageDocument = gql`
-    subscription SubscribeToLastMessage {
-  Message(order_by: {uuid: desc}, limit: 1) {
-    uuid
-    username
-    text
-    timestamp
-  }
-}
-    `;
-export type SubscribeToLastMessageSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToLastMessageSubscription>;
 export const SubscribeToLastUserTypingDocument = gql`
     subscription SubscribeToLastUserTyping($selfUuid: uuid) {
   user_typing(where: {uuid: {_neq: $selfUuid}}, limit: 1, order_by: {last_typed: desc}) {
@@ -1753,3 +1751,33 @@ export const SubscribeToUsersOnlineDocument = gql`
 }
     `;
 export type SubscribeToUsersOnlineSubscriptionResult = ApolloReactCommon.SubscriptionResult<SubscribeToUsersOnlineSubscription>;
+export const GetAllUsersDocument = gql`
+    query GetAllUsers {
+  User(order_by: {username: desc}) {
+    uuid
+    created_at
+    username
+    last_seen
+    last_typed
+    email
+    first_name
+    last_name
+  }
+}
+    `;
+export type GetAllUsersQueryResult = ApolloReactCommon.QueryResult<GetAllUsersQuery, GetAllUsersQueryVariables>;
+export const GetUserByUuidDocument = gql`
+    query GetUserByUuid($uuid: uuid!) {
+  User_by_pk(uuid: $uuid) {
+    uuid
+    username
+    email
+    last_seen
+    last_typed
+    first_name
+    last_name
+    created_at
+  }
+}
+    `;
+export type GetUserByUuidQueryResult = ApolloReactCommon.QueryResult<GetUserByUuidQuery, GetUserByUuidQueryVariables>;
