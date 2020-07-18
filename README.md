@@ -1,4 +1,19 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Secfi Chat App
+
+This app is a proof of concept meant to facilitate communication between current Secfi clients, potential clients, and Secfi team members.
+
+## Stack
+
+This app uses [React](https://reactjs.org/), [GraphQL](https://graphql.org/) with [Apollo 3.0](https://www.apollographql.com/docs/) and [Hasura](https://hasura.io/), as well as a Postgres database.
+
+## GraphQL Engine and Postgres DB
+
+Using [Hasura](https://hasura.io/) and [Docker](https://www.docker.com/), this app is currently using a local container running a Postgres DB and GraphQL Engine. You can find the configuration in the `docker-compose.yml` file. When launching the dev server with `yarn start`, a detached docker container is launched via a `docker-compose up -d` script. Once running, you can view the the UI console at [http://localhost:8080/console](http://localhost:8080/console).
+
+### TODO:
+
+- Set up user authorization and roles
+- Set up a production-ready Hasura deployment
 
 ## Available Scripts
 
@@ -12,10 +27,11 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
+As mentioned above, it will also launch the Hasura docker container.
+
 ### `yarn test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
 
 ### `yarn build`
 
@@ -25,7 +41,13 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### `yarn generate`
+
+Generates the facadeClient code from the Hasura GraphQL Schema. Learn more at [graphql-code-generator](https://graphql-code-generator.com/). The configuration is found in `codegen.yml` file.
+
+### `yarn generateGraphqlSchema`
+
+Generates the GraphQL `schema.json` file from Hasura in the root directory.
 
 ### `yarn eject`
 
@@ -36,9 +58,3 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
