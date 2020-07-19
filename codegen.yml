@@ -1,8 +1,9 @@
 overwrite: true
 schema:
-  - http://localhost:8080/v1/graphql
-  - "src/**/*.graphql"
-documents: "src/**/*.graphql"
+  # - http://localhost:8080/v1/graphql
+  - https://secfi-chat-api.herokuapp.com/v1/graphql
+  - 'src/**/*.graphql'
+documents: 'src/**/*.graphql'
 generates:
   src/@generated/fragmentMatcher.ts:
     plugins:
@@ -17,7 +18,7 @@ generates:
       - typescript-operations
       - typescript-react-apollo
     config:
-      declarationKind: "interface"
+      declarationKind: 'interface'
       withComponent: false
       withHooks: false
       withMutationFn: false

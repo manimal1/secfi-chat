@@ -6,9 +6,11 @@ This app is a proof of concept meant to facilitate communication between current
 
 This app uses [React](https://reactjs.org/), [GraphQL](https://graphql.org/) with [Apollo 3.0](https://www.apollographql.com/docs/) and [Hasura](https://hasura.io/), as well as a Postgres database.
 
-## GraphQL Engine and Postgres DB
+## GraphQL Engine over Postgres DB
 
-Using [Hasura](https://hasura.io/) and [Docker](https://www.docker.com/), this app is currently using a local container running a Postgres DB and GraphQL Engine. You can find the configuration in the `docker-compose.yml` file. When launching the dev server with `yarn start`, a detached docker container is launched via a `docker-compose up -d` script. Once running, you can view the the UI console at [http://localhost:8080/console](http://localhost:8080/console).
+Using [Hasura](https://hasura.io/) and [Heroku](heroku.com) this app is currently running a GraphQL Engine over Postgres DB. The console can be found [here](https://secfi-chat-api.herokuapp.com/console).
+
+If you'd like to work locally and try out something yourself, you can use [Docker](https://www.docker.com/). You can find the configuration in the `docker-compose.yml` file. Just run the `yarn start:local-api` script and a detached docker container will launch. Once running, you can view the the UI console at [http://localhost:8080/console](http://localhost:8080/console). On initial startup, you will have to create the `User` and `Message` tables.
 
 ### TODO:
 
@@ -29,6 +31,10 @@ The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
 As mentioned above, it will also launch the Hasura docker container.
+
+### `yarn start:local-api
+
+Runs the local detached docker container with Hasura GraphQL Engine over Postgres DB. Once running, you can view the the UI console at [http://localhost:8080/console](http://localhost:8080/console). On initial startup, you will have to create the `User` and `Message` tables.
 
 ### `yarn test`
 
