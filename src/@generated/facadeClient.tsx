@@ -30,188 +30,16 @@ export interface Boolean_Comparison_Exp {
   _nin?: Maybe<Array<Scalars['Boolean']>>;
 }
 
-/** columns and relationships of "Chat" */
-export interface Chat {
-  __typename?: 'Chat';
-  /** An array relationship */
-  Messages: Array<Message>;
-  /** An aggregated array relationship */
-  Messages_aggregate: Message_Aggregate;
-  type: Scalars['String'];
-  uuid: Scalars['uuid'];
-}
-
-
-/** columns and relationships of "Chat" */
-export interface ChatMessagesArgs {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
-}
-
-
-/** columns and relationships of "Chat" */
-export interface ChatMessages_AggregateArgs {
-  distinct_on?: Maybe<Array<Message_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Message_Order_By>>;
-  where?: Maybe<Message_Bool_Exp>;
-}
-
-/** aggregated selection of "Chat" */
-export interface Chat_Aggregate {
-  __typename?: 'Chat_aggregate';
-  aggregate?: Maybe<Chat_Aggregate_Fields>;
-  nodes: Array<Chat>;
-}
-
-/** aggregate fields of "Chat" */
-export interface Chat_Aggregate_Fields {
-  __typename?: 'Chat_aggregate_fields';
-  count?: Maybe<Scalars['Int']>;
-  max?: Maybe<Chat_Max_Fields>;
-  min?: Maybe<Chat_Min_Fields>;
-}
-
-
-/** aggregate fields of "Chat" */
-export interface Chat_Aggregate_FieldsCountArgs {
-  columns?: Maybe<Array<Chat_Select_Column>>;
-  distinct?: Maybe<Scalars['Boolean']>;
-}
-
-/** order by aggregate values of table "Chat" */
-export interface Chat_Aggregate_Order_By {
-  count?: Maybe<Order_By>;
-  max?: Maybe<Chat_Max_Order_By>;
-  min?: Maybe<Chat_Min_Order_By>;
-}
-
-/** input type for inserting array relation for remote table "Chat" */
-export interface Chat_Arr_Rel_Insert_Input {
-  data: Array<Chat_Insert_Input>;
-  on_conflict?: Maybe<Chat_On_Conflict>;
-}
-
-/** Boolean expression to filter rows from the table "Chat". All fields are combined with a logical 'AND'. */
-export interface Chat_Bool_Exp {
-  Messages?: Maybe<Message_Bool_Exp>;
-  _and?: Maybe<Array<Maybe<Chat_Bool_Exp>>>;
-  _not?: Maybe<Chat_Bool_Exp>;
-  _or?: Maybe<Array<Maybe<Chat_Bool_Exp>>>;
-  type?: Maybe<String_Comparison_Exp>;
-  uuid?: Maybe<Uuid_Comparison_Exp>;
-}
-
-/** unique or primary key constraints on table "Chat" */
-export enum Chat_Constraint {
-  /** unique or primary key constraint */
-  ChatPkey = 'Chat_pkey'
-}
-
-/** input type for inserting data into table "Chat" */
-export interface Chat_Insert_Input {
-  Messages?: Maybe<Message_Arr_Rel_Insert_Input>;
-  type?: Maybe<Scalars['String']>;
-  uuid?: Maybe<Scalars['uuid']>;
-}
-
-/** aggregate max on columns */
-export interface Chat_Max_Fields {
-  __typename?: 'Chat_max_fields';
-  type?: Maybe<Scalars['String']>;
-  uuid?: Maybe<Scalars['uuid']>;
-}
-
-/** order by max() on columns of table "Chat" */
-export interface Chat_Max_Order_By {
-  type?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
-}
-
-/** aggregate min on columns */
-export interface Chat_Min_Fields {
-  __typename?: 'Chat_min_fields';
-  type?: Maybe<Scalars['String']>;
-  uuid?: Maybe<Scalars['uuid']>;
-}
-
-/** order by min() on columns of table "Chat" */
-export interface Chat_Min_Order_By {
-  type?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
-}
-
-/** response of any mutation on the table "Chat" */
-export interface Chat_Mutation_Response {
-  __typename?: 'Chat_mutation_response';
-  /** number of affected rows by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data of the affected rows by the mutation */
-  returning: Array<Chat>;
-}
-
-/** input type for inserting object relation for remote table "Chat" */
-export interface Chat_Obj_Rel_Insert_Input {
-  data: Chat_Insert_Input;
-  on_conflict?: Maybe<Chat_On_Conflict>;
-}
-
-/** on conflict condition type for table "Chat" */
-export interface Chat_On_Conflict {
-  constraint: Chat_Constraint;
-  update_columns: Array<Chat_Update_Column>;
-  where?: Maybe<Chat_Bool_Exp>;
-}
-
-/** ordering options when selecting data from "Chat" */
-export interface Chat_Order_By {
-  Messages_aggregate?: Maybe<Message_Aggregate_Order_By>;
-  type?: Maybe<Order_By>;
-  uuid?: Maybe<Order_By>;
-}
-
-/** primary key columns input for table: "Chat" */
-export interface Chat_Pk_Columns_Input {
-  uuid: Scalars['uuid'];
-}
-
-/** select columns of table "Chat" */
-export enum Chat_Select_Column {
-  /** column name */
-  Type = 'type',
-  /** column name */
-  Uuid = 'uuid'
-}
-
-/** input type for updating data in table "Chat" */
-export interface Chat_Set_Input {
-  type?: Maybe<Scalars['String']>;
-  uuid?: Maybe<Scalars['uuid']>;
-}
-
-/** update columns of table "Chat" */
-export enum Chat_Update_Column {
-  /** column name */
-  Type = 'type',
-  /** column name */
-  Uuid = 'uuid'
-}
-
 /** columns and relationships of "Message" */
 export interface Message {
   __typename?: 'Message';
   /** An object relationship */
-  Chat?: Maybe<Chat>;
-  /** An object relationship */
   User: User;
-  chat_uuid?: Maybe<Scalars['uuid']>;
   is_deleted: Scalars['Boolean'];
   text: Scalars['String'];
   timestamp: Scalars['timestamptz'];
+  /** An object relationship */
+  userByUsername: User;
   user_uuid: Scalars['uuid'];
   username: Scalars['String'];
   uuid: Scalars['uuid'];
@@ -254,15 +82,14 @@ export interface Message_Arr_Rel_Insert_Input {
 
 /** Boolean expression to filter rows from the table "Message". All fields are combined with a logical 'AND'. */
 export interface Message_Bool_Exp {
-  Chat?: Maybe<Chat_Bool_Exp>;
   User?: Maybe<User_Bool_Exp>;
   _and?: Maybe<Array<Maybe<Message_Bool_Exp>>>;
   _not?: Maybe<Message_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Message_Bool_Exp>>>;
-  chat_uuid?: Maybe<Uuid_Comparison_Exp>;
   is_deleted?: Maybe<Boolean_Comparison_Exp>;
   text?: Maybe<String_Comparison_Exp>;
   timestamp?: Maybe<Timestamptz_Comparison_Exp>;
+  userByUsername?: Maybe<User_Bool_Exp>;
   user_uuid?: Maybe<Uuid_Comparison_Exp>;
   username?: Maybe<String_Comparison_Exp>;
   uuid?: Maybe<Uuid_Comparison_Exp>;
@@ -271,17 +98,16 @@ export interface Message_Bool_Exp {
 /** unique or primary key constraints on table "Message" */
 export enum Message_Constraint {
   /** unique or primary key constraint */
-  ChatMessagePkey = 'ChatMessage_pkey'
+  MessagePkey = 'Message_pkey'
 }
 
 /** input type for inserting data into table "Message" */
 export interface Message_Insert_Input {
-  Chat?: Maybe<Chat_Obj_Rel_Insert_Input>;
   User?: Maybe<User_Obj_Rel_Insert_Input>;
-  chat_uuid?: Maybe<Scalars['uuid']>;
   is_deleted?: Maybe<Scalars['Boolean']>;
   text?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamptz']>;
+  userByUsername?: Maybe<User_Obj_Rel_Insert_Input>;
   user_uuid?: Maybe<Scalars['uuid']>;
   username?: Maybe<Scalars['String']>;
   uuid?: Maybe<Scalars['uuid']>;
@@ -290,7 +116,6 @@ export interface Message_Insert_Input {
 /** aggregate max on columns */
 export interface Message_Max_Fields {
   __typename?: 'Message_max_fields';
-  chat_uuid?: Maybe<Scalars['uuid']>;
   text?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamptz']>;
   user_uuid?: Maybe<Scalars['uuid']>;
@@ -300,7 +125,6 @@ export interface Message_Max_Fields {
 
 /** order by max() on columns of table "Message" */
 export interface Message_Max_Order_By {
-  chat_uuid?: Maybe<Order_By>;
   text?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   user_uuid?: Maybe<Order_By>;
@@ -311,7 +135,6 @@ export interface Message_Max_Order_By {
 /** aggregate min on columns */
 export interface Message_Min_Fields {
   __typename?: 'Message_min_fields';
-  chat_uuid?: Maybe<Scalars['uuid']>;
   text?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamptz']>;
   user_uuid?: Maybe<Scalars['uuid']>;
@@ -321,7 +144,6 @@ export interface Message_Min_Fields {
 
 /** order by min() on columns of table "Message" */
 export interface Message_Min_Order_By {
-  chat_uuid?: Maybe<Order_By>;
   text?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
   user_uuid?: Maybe<Order_By>;
@@ -353,12 +175,11 @@ export interface Message_On_Conflict {
 
 /** ordering options when selecting data from "Message" */
 export interface Message_Order_By {
-  Chat?: Maybe<Chat_Order_By>;
   User?: Maybe<User_Order_By>;
-  chat_uuid?: Maybe<Order_By>;
   is_deleted?: Maybe<Order_By>;
   text?: Maybe<Order_By>;
   timestamp?: Maybe<Order_By>;
+  userByUsername?: Maybe<User_Order_By>;
   user_uuid?: Maybe<Order_By>;
   username?: Maybe<Order_By>;
   uuid?: Maybe<Order_By>;
@@ -371,8 +192,6 @@ export interface Message_Pk_Columns_Input {
 
 /** select columns of table "Message" */
 export enum Message_Select_Column {
-  /** column name */
-  ChatUuid = 'chat_uuid',
   /** column name */
   IsDeleted = 'is_deleted',
   /** column name */
@@ -389,7 +208,6 @@ export enum Message_Select_Column {
 
 /** input type for updating data in table "Message" */
 export interface Message_Set_Input {
-  chat_uuid?: Maybe<Scalars['uuid']>;
   is_deleted?: Maybe<Scalars['Boolean']>;
   text?: Maybe<Scalars['String']>;
   timestamp?: Maybe<Scalars['timestamptz']>;
@@ -400,8 +218,6 @@ export interface Message_Set_Input {
 
 /** update columns of table "Message" */
 export enum Message_Update_Column {
-  /** column name */
-  ChatUuid = 'chat_uuid',
   /** column name */
   IsDeleted = 'is_deleted',
   /** column name */
@@ -448,6 +264,10 @@ export interface User {
   last_name?: Maybe<Scalars['String']>;
   last_seen: Scalars['timestamptz'];
   last_typed: Scalars['timestamptz'];
+  /** An array relationship */
+  messagesByUsername: Array<Message>;
+  /** An aggregated array relationship */
+  messagesByUsername_aggregate: Message_Aggregate;
   username: Scalars['String'];
   uuid: Scalars['uuid'];
 }
@@ -465,6 +285,26 @@ export interface UserMessagesArgs {
 
 /** columns and relationships of "User" */
 export interface UserMessages_AggregateArgs {
+  distinct_on?: Maybe<Array<Message_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Message_Order_By>>;
+  where?: Maybe<Message_Bool_Exp>;
+}
+
+
+/** columns and relationships of "User" */
+export interface UserMessagesByUsernameArgs {
+  distinct_on?: Maybe<Array<Message_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Message_Order_By>>;
+  where?: Maybe<Message_Bool_Exp>;
+}
+
+
+/** columns and relationships of "User" */
+export interface UserMessagesByUsername_AggregateArgs {
   distinct_on?: Maybe<Array<Message_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
   offset?: Maybe<Scalars['Int']>;
@@ -519,6 +359,7 @@ export interface User_Bool_Exp {
   last_name?: Maybe<String_Comparison_Exp>;
   last_seen?: Maybe<Timestamptz_Comparison_Exp>;
   last_typed?: Maybe<Timestamptz_Comparison_Exp>;
+  messagesByUsername?: Maybe<Message_Bool_Exp>;
   username?: Maybe<String_Comparison_Exp>;
   uuid?: Maybe<Uuid_Comparison_Exp>;
 }
@@ -530,9 +371,7 @@ export enum User_Constraint {
   /** unique or primary key constraint */
   UserPkey = 'User_pkey',
   /** unique or primary key constraint */
-  UserUsernameKey = 'User_username_key',
-  /** unique or primary key constraint */
-  UserUuidKey = 'User_uuid_key'
+  UserUsernameKey = 'User_username_key'
 }
 
 /** input type for inserting data into table "User" */
@@ -544,6 +383,7 @@ export interface User_Insert_Input {
   last_name?: Maybe<Scalars['String']>;
   last_seen?: Maybe<Scalars['timestamptz']>;
   last_typed?: Maybe<Scalars['timestamptz']>;
+  messagesByUsername?: Maybe<Message_Arr_Rel_Insert_Input>;
   username?: Maybe<Scalars['String']>;
   uuid?: Maybe<Scalars['uuid']>;
 }
@@ -629,6 +469,7 @@ export interface User_Order_By {
   last_name?: Maybe<Order_By>;
   last_seen?: Maybe<Order_By>;
   last_typed?: Maybe<Order_By>;
+  messagesByUsername_aggregate?: Maybe<Message_Aggregate_Order_By>;
   username?: Maybe<Order_By>;
   uuid?: Maybe<Order_By>;
 }
@@ -693,10 +534,6 @@ export enum User_Update_Column {
 /** mutation root */
 export interface Mutation_Root {
   __typename?: 'mutation_root';
-  /** delete data from the table: "Chat" */
-  delete_Chat?: Maybe<Chat_Mutation_Response>;
-  /** delete single row from the table: "Chat" */
-  delete_Chat_by_pk?: Maybe<Chat>;
   /** delete data from the table: "Message" */
   delete_Message?: Maybe<Message_Mutation_Response>;
   /** delete single row from the table: "Message" */
@@ -709,10 +546,6 @@ export interface Mutation_Root {
   delete_user_online?: Maybe<User_Online_Mutation_Response>;
   /** delete data from the table: "user_typing" */
   delete_user_typing?: Maybe<User_Typing_Mutation_Response>;
-  /** insert data into the table: "Chat" */
-  insert_Chat?: Maybe<Chat_Mutation_Response>;
-  /** insert a single row into the table: "Chat" */
-  insert_Chat_one?: Maybe<Chat>;
   /** insert data into the table: "Message" */
   insert_Message?: Maybe<Message_Mutation_Response>;
   /** insert a single row into the table: "Message" */
@@ -729,10 +562,6 @@ export interface Mutation_Root {
   insert_user_typing?: Maybe<User_Typing_Mutation_Response>;
   /** insert a single row into the table: "user_typing" */
   insert_user_typing_one?: Maybe<User_Typing>;
-  /** update data of the table: "Chat" */
-  update_Chat?: Maybe<Chat_Mutation_Response>;
-  /** update single row of the table: "Chat" */
-  update_Chat_by_pk?: Maybe<Chat>;
   /** update data of the table: "Message" */
   update_Message?: Maybe<Message_Mutation_Response>;
   /** update single row of the table: "Message" */
@@ -745,18 +574,6 @@ export interface Mutation_Root {
   update_user_online?: Maybe<User_Online_Mutation_Response>;
   /** update data of the table: "user_typing" */
   update_user_typing?: Maybe<User_Typing_Mutation_Response>;
-}
-
-
-/** mutation root */
-export interface Mutation_RootDelete_ChatArgs {
-  where: Chat_Bool_Exp;
-}
-
-
-/** mutation root */
-export interface Mutation_RootDelete_Chat_By_PkArgs {
-  uuid: Scalars['uuid'];
 }
 
 
@@ -793,20 +610,6 @@ export interface Mutation_RootDelete_User_OnlineArgs {
 /** mutation root */
 export interface Mutation_RootDelete_User_TypingArgs {
   where: User_Typing_Bool_Exp;
-}
-
-
-/** mutation root */
-export interface Mutation_RootInsert_ChatArgs {
-  objects: Array<Chat_Insert_Input>;
-  on_conflict?: Maybe<Chat_On_Conflict>;
-}
-
-
-/** mutation root */
-export interface Mutation_RootInsert_Chat_OneArgs {
-  object: Chat_Insert_Input;
-  on_conflict?: Maybe<Chat_On_Conflict>;
 }
 
 
@@ -859,20 +662,6 @@ export interface Mutation_RootInsert_User_TypingArgs {
 /** mutation root */
 export interface Mutation_RootInsert_User_Typing_OneArgs {
   object: User_Typing_Insert_Input;
-}
-
-
-/** mutation root */
-export interface Mutation_RootUpdate_ChatArgs {
-  _set?: Maybe<Chat_Set_Input>;
-  where: Chat_Bool_Exp;
-}
-
-
-/** mutation root */
-export interface Mutation_RootUpdate_Chat_By_PkArgs {
-  _set?: Maybe<Chat_Set_Input>;
-  pk_columns: Chat_Pk_Columns_Input;
 }
 
 
@@ -936,12 +725,6 @@ export enum Order_By {
 /** query root */
 export interface Query_Root {
   __typename?: 'query_root';
-  /** fetch data from the table: "Chat" */
-  Chat: Array<Chat>;
-  /** fetch aggregated fields from the table: "Chat" */
-  Chat_aggregate: Chat_Aggregate;
-  /** fetch data from the table: "Chat" using primary key columns */
-  Chat_by_pk?: Maybe<Chat>;
   /** fetch data from the table: "Message" */
   Message: Array<Message>;
   /** fetch aggregated fields from the table: "Message" */
@@ -962,32 +745,6 @@ export interface Query_Root {
   user_typing: Array<User_Typing>;
   /** fetch aggregated fields from the table: "user_typing" */
   user_typing_aggregate: User_Typing_Aggregate;
-}
-
-
-/** query root */
-export interface Query_RootChatArgs {
-  distinct_on?: Maybe<Array<Chat_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chat_Order_By>>;
-  where?: Maybe<Chat_Bool_Exp>;
-}
-
-
-/** query root */
-export interface Query_RootChat_AggregateArgs {
-  distinct_on?: Maybe<Array<Chat_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chat_Order_By>>;
-  where?: Maybe<Chat_Bool_Exp>;
-}
-
-
-/** query root */
-export interface Query_RootChat_By_PkArgs {
-  uuid: Scalars['uuid'];
 }
 
 
@@ -1085,12 +842,6 @@ export interface Query_RootUser_Typing_AggregateArgs {
 /** subscription root */
 export interface Subscription_Root {
   __typename?: 'subscription_root';
-  /** fetch data from the table: "Chat" */
-  Chat: Array<Chat>;
-  /** fetch aggregated fields from the table: "Chat" */
-  Chat_aggregate: Chat_Aggregate;
-  /** fetch data from the table: "Chat" using primary key columns */
-  Chat_by_pk?: Maybe<Chat>;
   /** fetch data from the table: "Message" */
   Message: Array<Message>;
   /** fetch aggregated fields from the table: "Message" */
@@ -1111,32 +862,6 @@ export interface Subscription_Root {
   user_typing: Array<User_Typing>;
   /** fetch aggregated fields from the table: "user_typing" */
   user_typing_aggregate: User_Typing_Aggregate;
-}
-
-
-/** subscription root */
-export interface Subscription_RootChatArgs {
-  distinct_on?: Maybe<Array<Chat_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chat_Order_By>>;
-  where?: Maybe<Chat_Bool_Exp>;
-}
-
-
-/** subscription root */
-export interface Subscription_RootChat_AggregateArgs {
-  distinct_on?: Maybe<Array<Chat_Select_Column>>;
-  limit?: Maybe<Scalars['Int']>;
-  offset?: Maybe<Scalars['Int']>;
-  order_by?: Maybe<Array<Chat_Order_By>>;
-  where?: Maybe<Chat_Bool_Exp>;
-}
-
-
-/** subscription root */
-export interface Subscription_RootChat_By_PkArgs {
-  uuid: Scalars['uuid'];
 }
 
 
