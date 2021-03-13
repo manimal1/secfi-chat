@@ -32,7 +32,7 @@ You will also see any lint errors in the console.
 
 As mentioned above, it will also launch the Hasura docker container.
 
-### `yarn start:local-api
+### `yarn start:local-api`
 
 Runs the local detached docker container with Hasura GraphQL Engine over Postgres DB. Once running, you can view the the UI console at [http://localhost:8080/console](http://localhost:8080/console). On initial startup, you will have to create the `User` and `Message` tables.
 
