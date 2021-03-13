@@ -1,4 +1,4 @@
-## Secfi Chat App
+## Chat App
 
 This app is a proof of concept meant to facilitate communication between current Secfi clients, potential clients, and Secfi team members.
 
