@@ -1,6 +1,6 @@
 ## Chat App
 
-This app is a proof of concept meant to facilitate communication between current Secfi clients, potential clients, and Secfi team members.
+This app is a proof of concept meant to facilitate communication between current and potential clients, and business team members.
 
 ## Stack
 
